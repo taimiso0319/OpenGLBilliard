@@ -18,6 +18,7 @@ private:
     Vector3 position;
     Vector3 forward;
     Vector3 dirVec;
+    Vector3 speedVec;
     float speed;
     float radian;
     GLfloat mat[4];
@@ -30,6 +31,7 @@ public:
     void setSpeed(float s);
     void setDirVec(Vector3 vec);
     float getSpeed();
+    float getRadian();
     void setColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
     void setPosition(float x, float y, float z);
     void setPosition(Vector3 vec);
@@ -37,7 +39,8 @@ public:
     void setForward(Vector3 vec);
     void moveForward();
     void moveTo(Vector3 vec);
-    void updateOtherBallsDist(Ball * balls[]);
+    void checkDists(Ball * balls[]);
+    void hitBall(Ball * targetBall);
 };
 
 #endif /* Ball_h */
