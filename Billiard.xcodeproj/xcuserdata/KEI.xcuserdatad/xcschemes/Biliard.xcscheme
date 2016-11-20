@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA2A36F41D9A25FD00BBABFC"
-               BuildableName = "Biliard"
-               BlueprintName = "Biliard"
-               ReferencedContainer = "container:Biliard.xcodeproj">
+               BuildableName = "Billiard"
+               BlueprintName = "Billiard"
+               ReferencedContainer = "container:Billiard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA2A36F41D9A25FD00BBABFC"
-            BuildableName = "Biliard"
-            BlueprintName = "Biliard"
-            ReferencedContainer = "container:Biliard.xcodeproj">
+            BuildableName = "Billiard"
+            BlueprintName = "Billiard"
+            ReferencedContainer = "container:Billiard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA2A36F41D9A25FD00BBABFC"
-            BuildableName = "Biliard"
-            BlueprintName = "Biliard"
-            ReferencedContainer = "container:Biliard.xcodeproj">
+            BuildableName = "Billiard"
+            BlueprintName = "Billiard"
+            ReferencedContainer = "container:Billiard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA2A36F41D9A25FD00BBABFC"
-            BuildableName = "Biliard"
-            BlueprintName = "Biliard"
-            ReferencedContainer = "container:Biliard.xcodeproj">
+            BuildableName = "Billiard"
+            BlueprintName = "Billiard"
+            ReferencedContainer = "container:Billiard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

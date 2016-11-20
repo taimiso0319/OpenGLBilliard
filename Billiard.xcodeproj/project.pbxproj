@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA2A36F91D9A25FD00BBABFC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA2A36F81D9A25FD00BBABFC /* main.cpp */; };
+		AA2A36F91D9A25FD00BBABFC /* BilliardMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA2A36F81D9A25FD00BBABFC /* BilliardMain.cpp */; };
+		AA55EA331DDE1F3300B76F2F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA55EA321DDE1F3300B76F2F /* GLUT.framework */; };
+		AA55EA351DDE1F4000B76F2F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA55EA341DDE1F4000B76F2F /* OpenGL.framework */; };
+		AA55EA391DDE389A00B76F2F /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA371DDE389A00B76F2F /* Ball.cpp */; };
+		AA55EA481DE0DEBA00B76F2F /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA461DE0DEBA00B76F2F /* Pool.cpp */; };
+		AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA491DE0DF5B00B76F2F /* Camera.cpp */; };
+		AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */; };
+		AA55EA531DE0DF5B00B76F2F /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */; };
+		AA55EA541DE0DF5B00B76F2F /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +31,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AA2A36F51D9A25FD00BBABFC /* Biliard */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Biliard; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA2A36F81D9A25FD00BBABFC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AA2A36F51D9A25FD00BBABFC /* Billiard */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Billiard; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2A36F81D9A25FD00BBABFC /* BilliardMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BilliardMain.cpp; sourceTree = "<group>"; };
+		AA55EA321DDE1F3300B76F2F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		AA55EA341DDE1F4000B76F2F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		AA55EA371DDE389A00B76F2F /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
+		AA55EA381DDE389A00B76F2F /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		AA55EA461DE0DEBA00B76F2F /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
+		AA55EA471DE0DEBA00B76F2F /* Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
+		AA55EA491DE0DF5B00B76F2F /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawString.cpp; sourceTree = "<group>"; };
+		AA55EA4B1DE0DF5B00B76F2F /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
+		AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawString.h; sourceTree = "<group>"; };
+		AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
+		AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
+		AA55EA4F1DE0DF5B00B76F2F /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		AA55EA501DE0DF5B00B76F2F /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA55EA351DDE1F4000B76F2F /* OpenGL.framework in Frameworks */,
+				AA55EA331DDE1F3300B76F2F /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,33 +65,55 @@
 		AA2A36EC1D9A25FD00BBABFC = {
 			isa = PBXGroup;
 			children = (
-				AA2A36F71D9A25FD00BBABFC /* Biliard */,
+				AA2A36F71D9A25FD00BBABFC /* Billiard */,
 				AA2A36F61D9A25FD00BBABFC /* Products */,
+				AA55EA311DDE1F3300B76F2F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		AA2A36F61D9A25FD00BBABFC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA2A36F51D9A25FD00BBABFC /* Biliard */,
+				AA2A36F51D9A25FD00BBABFC /* Billiard */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA2A36F71D9A25FD00BBABFC /* Biliard */ = {
+		AA2A36F71D9A25FD00BBABFC /* Billiard */ = {
 			isa = PBXGroup;
 			children = (
-				AA2A36F81D9A25FD00BBABFC /* main.cpp */,
+				AA55EA491DE0DF5B00B76F2F /* Camera.cpp */,
+				AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */,
+				AA55EA4B1DE0DF5B00B76F2F /* Quaternion.h */,
+				AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */,
+				AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */,
+				AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */,
+				AA55EA4F1DE0DF5B00B76F2F /* Camera.h */,
+				AA55EA501DE0DF5B00B76F2F /* Vector3.h */,
+				AA2A36F81D9A25FD00BBABFC /* BilliardMain.cpp */,
+				AA55EA371DDE389A00B76F2F /* Ball.cpp */,
+				AA55EA381DDE389A00B76F2F /* Ball.h */,
+				AA55EA461DE0DEBA00B76F2F /* Pool.cpp */,
+				AA55EA471DE0DEBA00B76F2F /* Pool.h */,
 			);
-			path = Biliard;
+			path = Billiard;
+			sourceTree = "<group>";
+		};
+		AA55EA311DDE1F3300B76F2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA55EA341DDE1F4000B76F2F /* OpenGL.framework */,
+				AA55EA321DDE1F3300B76F2F /* GLUT.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA2A36F41D9A25FD00BBABFC /* Biliard */ = {
+		AA2A36F41D9A25FD00BBABFC /* Billiard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA2A36FC1D9A25FE00BBABFC /* Build configuration list for PBXNativeTarget "Biliard" */;
+			buildConfigurationList = AA2A36FC1D9A25FE00BBABFC /* Build configuration list for PBXNativeTarget "Billiard" */;
 			buildPhases = (
 				AA2A36F11D9A25FD00BBABFC /* Sources */,
 				AA2A36F21D9A25FD00BBABFC /* Frameworks */,
@@ -77,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = Biliard;
+			name = Billiard;
 			productName = Biliard;
-			productReference = AA2A36F51D9A25FD00BBABFC /* Biliard */;
+			productReference = AA2A36F51D9A25FD00BBABFC /* Billiard */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA2A36F01D9A25FD00BBABFC /* Build configuration list for PBXProject "Biliard" */;
+			buildConfigurationList = AA2A36F01D9A25FD00BBABFC /* Build configuration list for PBXProject "Billiard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -109,7 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA2A36F41D9A25FD00BBABFC /* Biliard */,
+				AA2A36F41D9A25FD00BBABFC /* Billiard */,
 			);
 		};
 /* End PBXProject section */
@@ -119,7 +165,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2A36F91D9A25FD00BBABFC /* main.cpp in Sources */,
+				AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */,
+				AA55EA391DDE389A00B76F2F /* Ball.cpp in Sources */,
+				AA55EA481DE0DEBA00B76F2F /* Pool.cpp in Sources */,
+				AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */,
+				AA55EA541DE0DF5B00B76F2F /* Vector3.cpp in Sources */,
+				AA2A36F91D9A25FD00BBABFC /* BilliardMain.cpp in Sources */,
+				AA55EA531DE0DF5B00B76F2F /* Quaternion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +282,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA2A36F01D9A25FD00BBABFC /* Build configuration list for PBXProject "Biliard" */ = {
+		AA2A36F01D9A25FD00BBABFC /* Build configuration list for PBXProject "Billiard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA2A36FA1D9A25FD00BBABFC /* Debug */,
@@ -239,13 +291,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA2A36FC1D9A25FE00BBABFC /* Build configuration list for PBXNativeTarget "Biliard" */ = {
+		AA2A36FC1D9A25FE00BBABFC /* Build configuration list for PBXNativeTarget "Billiard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA2A36FD1D9A25FE00BBABFC /* Debug */,
 				AA2A36FE1D9A25FE00BBABFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

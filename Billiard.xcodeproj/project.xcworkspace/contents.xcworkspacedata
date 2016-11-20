@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Biliard.xcodeproj">
+      location = "self:/Users/KEI/Projects/C++Projects/Biliard/Billiard.xcodeproj">
    </FileRef>
 </Workspace>
