@@ -91,7 +91,7 @@ void Ball::moveTo(Vector3 vec)
     this->position = this->position + vec * this->speed;
 }
 
-
+// it checks the distance between the each balls;
 void Ball::checkDists(Ball **balls)
 {
     Vector3 thisBallPos = this->position;
@@ -110,6 +110,8 @@ void Ball::checkDists(Ball **balls)
     }
 }
 
+// TODO: you need to replace the player ball from touched position to (closest) untouched position;
+
 void Ball::hitBall(Ball * targetBall)
 {
     Vector3 toTargetVector = targetBall->getPosition() - this->position;
@@ -121,10 +123,10 @@ void Ball::hitBall(Ball * targetBall)
     this->setSpeed(this->speed - tempSpeed);
     Vector3 tempDir = crossProduct(toTargetVector);
     tempDir.display_test();
-    tempDir.normalize();
-    tempDir.display_test(); 
+    //tempDir.normalize();
+    //tempDir.display_test();
     //cout << toTargetVector.x << " asfd " << toTargetVector.y << " asfd " << toTargetVector.z;
-    cout << angle;
+    cout << angle << endl;
     this->setDirVec(tempDir);
     
 }
