@@ -8,6 +8,10 @@
 
 #include "Ball.h"
 #include <math.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 Ball::Ball()
 {
@@ -116,7 +120,11 @@ void Ball::hitBall(Ball * targetBall)
     targetBall->setDirVec(toTargetVector);
     this->setSpeed(this->speed - tempSpeed);
     Vector3 tempDir = crossProduct(toTargetVector);
+    tempDir.display_test();
     tempDir.normalize();
+    tempDir.display_test(); 
+    //cout << toTargetVector.x << " asfd " << toTargetVector.y << " asfd " << toTargetVector.z;
+    cout << angle;
     this->setDirVec(tempDir);
     
 }

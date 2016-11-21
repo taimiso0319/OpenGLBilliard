@@ -7,6 +7,10 @@
 //
 
 #include "Vector3.h"
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
 
 /* Basic initialization and nomalisation for Vector3 class*/
 
@@ -30,4 +34,9 @@ void Vector3::normalize()
         y /= mag;
         z /= mag;
     }
+}
+
+void Vector3::display_test()
+{
+    cout << "x = " << this->x << " y = " << this->y << " z = " << this->z << endl;
 }

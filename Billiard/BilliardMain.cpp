@@ -44,7 +44,7 @@ Ball *balls[1] = {
     new Ball( 0.2f , 0.81f,-0.1f, 0.05f)  //2
     */
     };
-Ball *player_ball = new Ball(0, 0.81f, 1.2f, 0.05f);
+Ball *player_ball = new Ball(-0.01f, 0.81f, 1.2f, 0.05f);
 Pool pool;
 Camera Cam;
 DrawString ds;

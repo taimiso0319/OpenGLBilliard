@@ -38,6 +38,8 @@ public:
     Vector3 operator/( const float f) const { return Vector3(x/f,y/f,z/f); };
     
     void normalize();
+    
+    void display_test();
 };
 
 

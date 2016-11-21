@@ -10,6 +10,7 @@
 #define Ball_h
 
 #include <stdio.h>
+#include <iostream>
 #include "Vector3.h"
 #include <GLUT/glut.h>
 

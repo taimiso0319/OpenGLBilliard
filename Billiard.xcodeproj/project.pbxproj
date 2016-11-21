@@ -83,12 +83,12 @@
 			isa = PBXGroup;
 			children = (
 				AA55EA491DE0DF5B00B76F2F /* Camera.cpp */,
-				AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */,
-				AA55EA4B1DE0DF5B00B76F2F /* Quaternion.h */,
-				AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */,
-				AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */,
-				AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */,
 				AA55EA4F1DE0DF5B00B76F2F /* Camera.h */,
+				AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */,
+				AA55EA4B1DE0DF5B00B76F2F /* Quaternion.h */,
+				AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */,
+				AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */,
+				AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */,
 				AA55EA501DE0DF5B00B76F2F /* Vector3.h */,
 				AA2A36F81D9A25FD00BBABFC /* BilliardMain.cpp */,
 				AA55EA371DDE389A00B76F2F /* Ball.cpp */,
