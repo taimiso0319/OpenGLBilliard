@@ -41,6 +41,10 @@ public:
     void moveTo(Vector3 vec);
     void checkDists(Ball * balls[]);
     void hitBall(Ball * targetBall);
+    float getVectorLength(Vector3 vec);
+    float dotProduct(Vector3 targetVec);
+    Vector3 crossProduct(Vector3 targetVec);
+    float getAngleOfVectors(Vector3 targetVec);
 };
 
 #endif /* Ball_h */

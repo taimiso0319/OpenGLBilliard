@@ -158,8 +158,10 @@ void init(void)
 }
 
 void updateBalls(){
+    player_ball->checkDists(balls);
     for(int i = 0; i < sizeof balls / sizeof balls[0]; i++)
     {
+        //balls[i]->checkDists(balls);
         balls[i]->Update();
     }
     player_ball->Update();

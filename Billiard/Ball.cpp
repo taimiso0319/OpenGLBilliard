@@ -110,8 +110,46 @@ void Ball::hitBall(Ball * targetBall)
 {
     Vector3 toTargetVector = targetBall->getPosition() - this->position;
     toTargetVector.normalize();
-    Vector3 speedVec = this->dirVec * this->speed;
+    float angle = getAngleOfVectors(toTargetVector);
+    float tempSpeed = this->speed * angle / 90;
+    targetBall->setSpeed(tempSpeed);
+    targetBall->setDirVec(toTargetVector);
+    this->setSpeed(this->speed - tempSpeed);
+    Vector3 tempDir = crossProduct(toTargetVector);
+    tempDir.normalize();
+    this->setDirVec(tempDir);
     
+}
+
+float Ball::getVectorLength(Vector3 vec)
+{
+    return powf((vec.x * vec.x) + (vec.y * vec.y) + (vec.z * vec.z), 0.5);
+}
+
+float Ball::dotProduct(Vector3 targetVec)
+{
+    return this->dirVec.x * targetVec.x + this->dirVec.y * targetVec.y + this->dirVec.z * targetVec.z;
+}
+
+Vector3 Ball::crossProduct(Vector3 targetVec)
+{
+    return Vector3(this->dirVec.y * targetVec.z - this->dirVec.z * targetVec.y,
+                   this->dirVec.z * targetVec.x - this->dirVec.x * targetVec.z,
+                   this->dirVec.x * targetVec.y - this->dirVec.y * targetVec.x
+                   );
+}
+
+float Ball::getAngleOfVectors(Vector3 targetVec)
+{
+    float tempLengthThis = getVectorLength(this->dirVec);
+    float tempLengthTarget = getVectorLength(targetVec);
+    
+    float cosSita = dotProduct(targetVec) / (tempLengthThis * tempLengthTarget);
+    
+    float sita = acos(cosSita);
+    sita = sita * 180.0 / PI;
+    
+    return sita;
 }
 
 void Ball::Update()
