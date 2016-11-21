@@ -140,7 +140,8 @@ float Ball::dotProduct(Vector3 targetVec)
 {
     return this->dirVec.x * targetVec.x + this->dirVec.y * targetVec.y + this->dirVec.z * targetVec.z;
 }
-
+// Todo : this is useless right now;
+// use arctan to make a vertical vector;
 Vector3 Ball::crossProduct(Vector3 targetVec)
 {
     return Vector3(this->dirVec.y * targetVec.z - this->dirVec.z * targetVec.y,
