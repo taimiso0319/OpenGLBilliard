@@ -2,7 +2,7 @@
 //  Pool.hpp
 //  Billiard
 //
-//  Created by 安田圭佑 on 11/14/16.
+//  Created by 安田圭佑 on 11/12/16.
 //  Copyright © 2016 Keisuke Yasuda. All rights reserved.
 //
 
@@ -23,6 +23,10 @@ private:
 public:
     Pool();
     void Update();
+    float frontf;
+    float backf;
+    float rightf;
+    float leftf;
 };
 
 #endif /* Pool_h */

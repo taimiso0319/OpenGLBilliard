@@ -33,6 +33,11 @@ Ball::Ball(float init_x, float init_y, float init_z, float init_rad)
     this->speed = 0.0f;
 }
 
+void Ball::showPosition()
+{
+    position.display_test();
+}
+
 float Ball::getRadian()
 {
     return this->radian;
@@ -64,6 +69,16 @@ Vector3 Ball::getPosition()
 void Ball::setDirVec(Vector3 vec)
 {
     this->dirVec = vec;
+}
+
+Vector3 Ball::getDirVec()
+{
+    return this->dirVec;
+}
+
+void Ball::setDirVec(float x, float y, float z)
+{
+    this->dirVec = Vector3(x, y, z);
 }
 
 void Ball::setPosition(float x, float y, float z)
@@ -100,21 +115,24 @@ void Ball::moveTo(Vector3 vec)
 void Ball::checkDists(Ball **balls)
 {
     Vector3 thisBallPos = this->position;
-    for(int i = 0; i < sizeof balls / sizeof balls[0]; i++)
+    for(int i = 0; i < 15; i++)
     {
-        Vector3 targetBallPos = balls[i]->getPosition();
-        float tempX = targetBallPos.x - thisBallPos.x;
-        float tempY = targetBallPos.y - thisBallPos.y;
-        float tempZ = targetBallPos.z - thisBallPos.z;
-        float dist = tempX * tempX + tempY * tempY + tempZ * tempZ;
-        float powRad = this->radian * this->radian + balls[i]->getRadian() * balls[i]->getRadian();
-        if((dist - powRad) <= 0)
-        {
-            thisBallPos.display_test();
-            Vector3 tempPos = this->position + (this->dirVec * -1) * (dist - powRad);
-            tempPos.display_test();
-            this->setPosition(tempPos);
-            hitBall(balls[i]);
+        if(this != balls[i]){
+            Vector3 targetBallPos = balls[i]->getPosition();
+            float tempX = targetBallPos.x - thisBallPos.x;
+            float tempY = targetBallPos.y - thisBallPos.y;
+            float tempZ = targetBallPos.z - thisBallPos.z;
+            float dist = tempX * tempX + tempY * tempY + tempZ * tempZ;
+            float powRad = this->radian * this->radian + balls[i]->getRadian() * balls[i]->getRadian();
+            if((dist - powRad) <= 0)
+            {
+                //cout << "hit" << endl;
+                //thisBallPos.display_test();
+                Vector3 tempPos = this->position + (this->dirVec * -1) * (dist - powRad);
+                //tempPos.display_test();
+                this->setPosition(tempPos);
+                hitBall(balls[i]);
+            }
         }
     }
 }
@@ -123,19 +141,27 @@ void Ball::checkDists(Ball **balls)
 
 void Ball::hitBall(Ball * targetBall)
 {
+    this->setPosition(this->position + dirVec * -0.05f);
     Vector3 toTargetVector = targetBall->getPosition() - this->position;
     toTargetVector.normalize();
+    cout << "dirVec" << endl;
+    dirVec.display_test();
+    cout << "totarget" << endl;
+    toTargetVector.display_test();
     float angle = getAngleOfVectors(toTargetVector);
     float tempSpeed = this->speed * angle / 90;
+    
+    cout << "tempSpeed" << endl;
+    cout << tempSpeed << endl;
     targetBall->setSpeed(tempSpeed);
     targetBall->setDirVec(toTargetVector);
     this->setSpeed(this->speed - tempSpeed);
     Vector3 tempDir = crossProduct(toTargetVector);
-    tempDir.display_test();
-    //tempDir.normalize();
+    //tempDir.display_test();
+    tempDir.normalize();
     //tempDir.display_test();
     //cout << toTargetVector.x << " asfd " << toTargetVector.y << " asfd " << toTargetVector.z;
-    cout << angle << endl;
+    //cout << angle << endl;
     this->setDirVec(tempDir);
     
 }
@@ -154,8 +180,8 @@ float Ball::dotProduct(Vector3 targetVec)
 Vector3 Ball::crossProduct(Vector3 targetVec)
 {
     return Vector3(this->dirVec.y * targetVec.z - this->dirVec.z * targetVec.y,
-                   this->dirVec.z * targetVec.x - this->dirVec.x * targetVec.z,
-                   this->dirVec.x * targetVec.y - this->dirVec.y * targetVec.x
+                   this->dirVec.x * targetVec.y - this->dirVec.y * targetVec.x,
+                   this->dirVec.z * targetVec.x - this->dirVec.x * targetVec.z
                    );
 }
 

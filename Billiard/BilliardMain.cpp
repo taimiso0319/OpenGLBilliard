@@ -13,6 +13,8 @@
 #include <math.h>
 #include "Ball.h"
 #include "Pool.h"
+#include "Cylinder.h"
+
 #include "DrawString.h"
 #include "Camera.h"
 
@@ -26,56 +28,9 @@ bool Key_DOWN = false;
 bool Key_RIGHT = false;
 bool Key_LEFT = false;
 bool isShowingHelp = false;
-int Mouse_X, Mouse_Y;
 
-struct Quaternion
-{
-    double w;
-    double x;
-    double y;
-    double z;
-};
-
-double Rotate[16];
-
-Quaternion Target;
-Quaternion current = {0.0,0.0,0.0,0.0};
-
-Quaternion & operator *(Quaternion &q1, Quaternion &q2)
-{
-    Quaternion q0={
-        q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z,
-        q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y,
-        q1.w * q2.y - q1.x * q2.z + q1.y * q2.w + q1.z * q2.x,
-        q1.w * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * q2.w,
-    };
-    q1=q0;
-    return q1;
-}
-
-void qtor(double *r , Quaternion q)
-{
-    double xx = q.x * q.x * 2.0;
-    double yy = q.y * q.y * 2.0;
-    double zz = q.z * q.z * 2.0;
-    double xy = q.x * q.y * 2.0;
-    double yz = q.y * q.z * 2.0;
-    double zx = q.z * q.x * 2.0;
-    double xw = q.x * q.w * 2.0;
-    double yw = q.y * q.w * 2.0;
-    double zw = q.z * q.w * 2.0;
-    double r1[16]={ 1.0 - yy - zz, xy + zw, zx - yw, 0.0,
-        xy - zw, 1.0 - zz - xx, yz + xw, 0.0,
-        zx + yw, yz - xw, 1.0 - xx - yy, 0.0,
-        0.0, 0.0, 0.0, 1.0};
-    for (int i = 0;i < 16;i++) {
-        r[i]=r1[i];
-    }
-}
-
-Ball *balls[1] = {
+Ball *balls[15] = {
     new Ball( 0, 0.81f, 0.3f, 0.05f), //1
-    /*
     new Ball(-0.05f, 0.81f, 0.2f, 0.05f), //8
     new Ball( 0.05f, 0.81f, 0.2f, 0.05f), //7
     
@@ -93,17 +48,16 @@ Ball *balls[1] = {
     new Ball( 0    , 0.81f,-0.1f, 0.05f), //5
     new Ball( 0.1f , 0.81f,-0.1f, 0.05f), //4
     new Ball( 0.2f , 0.81f,-0.1f, 0.05f)  //2
-    */
     };
 Ball *player_ball = new Ball(-0.01f, 0.81f, 1.2f, 0.05f);
 Pool pool;
+Cylinder Cue = Cylinder();
 Camera Cam;
 DrawString ds;
 
 void ballColorInitialize()
 {
     balls[0] ->setColor(0.8f, 0.8f, 0.4f, 1.0f);
-    /*
     balls[1] ->setColor(0.0f, 0.0f, 0.0f, 1.0f);
     balls[2] ->setColor(0.4f, 0.4f, 0.1f, 1.0f);
     balls[3] ->setColor(0.9f, 0.6f, 0.4f, 1.0f);
@@ -118,7 +72,22 @@ void ballColorInitialize()
     balls[12]->setColor(0.6f, 0.6f, 0.2f, 1.0f);
     balls[13]->setColor(0.8f, 0.4f, 0.8f, 1.0f);
     balls[14]->setColor(0.4f, 0.4f, 0.8f, 1.0f);
-     */
+}
+
+void checkWall(Ball * ball)
+{
+    Vector3 tempPos = ball->getPosition();
+    Vector3 tempDir = ball->getDirVec();
+    if(tempPos.x + ball->getRadian() > pool.rightf || tempPos.x + ball->getRadian() < pool.leftf)
+    {
+        tempPos = tempPos + (tempDir * -0.01f);
+        ball->setDirVec(ball->getDirVec().x * -1, ball->getDirVec().y, ball->getDirVec().z);
+    }
+    if(tempPos.z + ball->getRadian() > pool.backf || tempPos.z + ball->getRadian() < pool.frontf)
+    {
+        tempPos = tempPos + (tempDir * -0.01f);
+        ball->setDirVec(ball->getDirVec().x, ball->getDirVec().y, ball->getDirVec().z * -1);
+    }
 }
 
 // for recognizing each arrow keys are pushed down;
@@ -176,53 +145,28 @@ void arrowKeysUp(int key, int x, int y)
 // you can feel free to add any key actions.
 void keyboard(unsigned char key, int x, int y)
 {
+
     switch (key) {
         case ' ':
             // TODO: do something for pushing a space bar;
-            player_ball->setSpeed(0.1f);
+            if(player_ball->getSpeed() <= 0)
+            {
+                player_ball->setSpeed(0.15f);
+            }
             break;
         case 'h':
             isShowingHelp = !isShowingHelp;
             break;
+        case 'r':
+            Cam.setLookAt(0, 0.81, 0);
+            Cam.RotateUpdate();
+            break;
+        case 'c':
+            Cam.setLookAt(player_ball->getPosition());
+            Cam.RotateUpdate();
+            break;
         default:
             break;
-    }
-}
-
-void mouse(int button, int state, int x, int y)
-{
-    if(button){
-        switch (state) {
-            case GLUT_DOWN:
-                Mouse_X = x;
-                Mouse_Y = y;
-                break;
-            case GLUT_UP:
-                current = Target;
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-void mousemove(int x, int y)
-{
-    //移動量を計算
-    double dx = (x - Mouse_X) * 1.33/WIDTH;
-    double dy = (y - Mouse_Y) * 1.0/HEIGHT;
-    
-    //クォータニオンの長さ
-    double length = sqrt(dx * dx + dy * dy);
-    
-    if (length != 0.0) {
-        double radian = length * PAI;
-        double theta = sin(radian) / length;
-        Quaternion after={ cos(radian), dy * theta, dx * theta, 0.0};//回転後の姿勢
-        
-        Target = after * current;
-        
-        qtor(Rotate, Target);
     }
 }
 
@@ -246,10 +190,11 @@ void init(void)
 
 void updateBalls(){
     player_ball->checkDists(balls);
-    for(int i = 0; i < sizeof balls / sizeof balls[0]; i++)
+    for(int i = 0; i < 15; i++)
     {
-        //balls[i]->checkDists(balls);
+        balls[i]->checkDists(balls);
         balls[i]->Update();
+        checkWall(balls[i]);
     }
     player_ball->Update();
 }
@@ -265,6 +210,10 @@ void drawStrings(){
 // it works when the flags are true;
 void keyboardFlag(void)
 {
+    Vector3 tempDir;
+    tempDir = (Cam.getLookAt() - Cam.getPosition());
+    tempDir.y = 0;
+    tempDir.normalize();
     if(Key_UP)
     {
     }
@@ -273,9 +222,19 @@ void keyboardFlag(void)
     }
     if(Key_LEFT)
     {
+        Cam.RotateLeft();
+        Cue.RotateRight();
+        if(player_ball->getSpeed() <= 0){
+            player_ball->setDirVec(tempDir);
+        }
     }
     if(Key_RIGHT)
     {
+        Cam.RotateRight();
+        Cue.RotateLeft();
+        if(player_ball->getSpeed() <= 0){
+            player_ball->setDirVec(tempDir);
+        }
     }
 }
 
@@ -284,20 +243,31 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glColor3f(1.0, 1.0, 1.0);
     glLoadIdentity();
-    
     keyboardFlag();
     Cam.updateCamera();
-    glMultMatrixd(Rotate);
+    Cue.setPosition(Cam.getPosition());
+    Cue.Update();
     
     // if you need it, activate it
     drawStrings();
     
     // put the staffs that you want to show here
     glNormal3f(0.0, 0.0, 1.0);
-    
+    //player_ball->showPosition();
     pool.Update();
+    checkWall(player_ball);
     updateBalls();
-    
+    if(player_ball->getSpeed() <= 0)
+    {
+        Cam.setLookAt(player_ball->getPosition());
+        Cam.RotateUpdate();
+        
+        Vector3 tempDir;
+        tempDir = (Cam.getLookAt() - Cam.getPosition());
+        tempDir.y = 0;
+        tempDir.normalize();
+        player_ball->setDirVec(tempDir);
+    }
     glutSwapBuffers();
     glFlush();
     
@@ -309,7 +279,7 @@ void reshape(int w, int h)
     glViewport(0, 0, (GLsizei) w, (GLsizei) h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(90.0, (float)w/h, 0.01, 10.0);
+    gluPerspective(75.0, (double)WIDTH / (double)HEIGHT, 1.0, 1000.0);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -328,7 +298,6 @@ int main(int argc, char** argv)
     // this func updates the items that you wanna change, prob;
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-    glutMouseFunc(mouse);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(arrowkeysDown);
     glutSpecialUpFunc(arrowKeysUp);

@@ -29,10 +29,13 @@ public:
     Ball(float init_x, float init_y, float init_z, float init_rad);
     void Update();
     Vector3 getPosition();
+    void showPosition();
     void setSpeed(float s);
     void setDirVec(Vector3 vec);
+    void setDirVec(float x, float y, float z);
     float getSpeed();
     float getRadian();
+    Vector3 getDirVec();
     void setColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
     void setPosition(float x, float y, float z);
     void setPosition(Vector3 vec);

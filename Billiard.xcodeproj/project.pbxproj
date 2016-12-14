@@ -16,6 +16,7 @@
 		AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */; };
 		AA55EA541DE0DF5B00B76F2F /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */; };
 		AAFA009E1E006437007A58C6 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAFA009C1E006437007A58C6 /* Cube.cpp */; };
+		AAFA00BC1E01A233007A58C6 /* Cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAFA00BA1E01A233007A58C6 /* Cylinder.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,8 @@
 		AA55EA501DE0DF5B00B76F2F /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		AAFA009C1E006437007A58C6 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		AAFA009D1E006437007A58C6 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		AAFA00BA1E01A233007A58C6 /* Cylinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cylinder.cpp; sourceTree = "<group>"; };
+		AAFA00BB1E01A233007A58C6 /* Cylinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cylinder.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				AA55EA4F1DE0DF5B00B76F2F /* Camera.h */,
 				AAFA009C1E006437007A58C6 /* Cube.cpp */,
 				AAFA009D1E006437007A58C6 /* Cube.h */,
+				AAFA00BA1E01A233007A58C6 /* Cylinder.cpp */,
+				AAFA00BB1E01A233007A58C6 /* Cylinder.h */,
 				AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */,
 				AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */,
 				AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */,
@@ -167,6 +172,7 @@
 			files = (
 				AAFA009E1E006437007A58C6 /* Cube.cpp in Sources */,
 				AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */,
+				AAFA00BC1E01A233007A58C6 /* Cylinder.cpp in Sources */,
 				AA55EA391DDE389A00B76F2F /* Ball.cpp in Sources */,
 				AA55EA481DE0DEBA00B76F2F /* Pool.cpp in Sources */,
 				AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */,

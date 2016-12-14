@@ -2,7 +2,7 @@
 //  Cube.h
 //  Billiard
 //
-//  Created by 安田圭佑 on 12/14/16.
+//  Created by 安田圭佑 on 12/10/16.
 //  Copyright © 2016 Keisuke Yasuda. All rights reserved.
 //
 
@@ -22,9 +22,11 @@ private:
 public:
     Cube();
     void setPosition(float x, float y, float z);
+    Vector3 getPosition();
     void setScale(float x, float y, float z);
     void setMaterial(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
     void Update();
+    void displayPosition();
 };
 
 #endif /* Cube_h */

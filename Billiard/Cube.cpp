@@ -2,7 +2,7 @@
 //  Cube.cpp
 //  Billiard
 //
-//  Created by 安田圭佑 on 12/14/16.
+//  Created by 安田圭佑 on 12/10/16.
 //  Copyright © 2016 Keisuke Yasuda. All rights reserved.
 //
 
@@ -20,16 +20,27 @@ void Cube::setPosition(float x, float y, float z)
     this->position = Vector3(x, y, z);
 }
 
+Vector3 Cube::getPosition()
+{
+    return this->position;
+}
+
 void Cube::setScale(float x, float y, float z)
 {
     this->scale = Vector3(x, y ,z);
 }
 
-void Cube::setMaterial(GLfloat r, GLfloat g, GLfloat b, GLfloat a){
+void Cube::setMaterial(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+{
     material[0] = r;
     material[1] = g;
     material[2] = b;
     material[3] = a;
+}
+
+void Cube::displayPosition()
+{
+    position.display_test();
 }
 
 void Cube::Update()

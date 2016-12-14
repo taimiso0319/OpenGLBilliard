@@ -13,9 +13,10 @@
 /* Initialize a Camera class */
 Camera::Camera()
 {
-    position = Vector3(0, 2,2);
-    lookAt = Vector3(0, 0, 0);
+    position = Vector3(0, 2, 2);
+    lookAt = Vector3(0, 0.81f, 0);
     up = Vector3(0,1,0);
+    RotateUpdate();
 }
 
 /* Calculate and update lookAt and up vectors. */
@@ -24,6 +25,28 @@ void Camera::updateCamera()
     gluLookAt(position.x, position.y, position.z,
               lookAt.x,   lookAt.y,   lookAt.z,
               up.x,       up.y,       up.z);
+    //position.display_test();
+    //lookAt.display_test();
+}
+
+void Camera::RotateLeft()
+{
+    phy+=2;
+    RotateUpdate();
+}
+
+void Camera::RotateRight()
+{
+    phy-=2;
+    RotateUpdate();
+}
+
+void Camera::RotateUpdate()
+{
+    position.x = lookAt.x + this->r * sin(theta * (PI/180)) * cos(phy * (PI/180));
+    position.z = lookAt.z + this->r * sin(theta * (PI/180)) * sin(phy * (PI/180));
+    position.y = lookAt.y + this->r * cos(theta * (PI/180));
+    //position.display_test();
 }
 
 Vector3 Camera::getPosition()
