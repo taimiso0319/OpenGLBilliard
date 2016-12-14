@@ -71,6 +71,11 @@ void Ball::setPosition(float x, float y, float z)
     this->position = *new Vector3(x,y,z);
 }
 
+void Ball::setPosition(Vector3 vec)
+{
+    this->position = vec;
+}
+
 void Ball::setForward(float x, float y, float z)
 {
     this->forward = *new Vector3(x, y, z);
@@ -105,6 +110,10 @@ void Ball::checkDists(Ball **balls)
         float powRad = this->radian * this->radian + balls[i]->getRadian() * balls[i]->getRadian();
         if((dist - powRad) <= 0)
         {
+            thisBallPos.display_test();
+            Vector3 tempPos = this->position + (this->dirVec * -1) * (dist - powRad);
+            tempPos.display_test();
+            this->setPosition(tempPos);
             hitBall(balls[i]);
         }
     }

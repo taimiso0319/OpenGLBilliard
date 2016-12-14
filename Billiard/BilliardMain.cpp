@@ -16,14 +16,65 @@
 #include "DrawString.h"
 #include "Camera.h"
 
+#define DEGREE 60
+#define WIDTH 500
+#define HEIGHT 500
+#define PAI 3.14159
+
 bool Key_UP = false;
 bool Key_DOWN = false;
 bool Key_RIGHT = false;
 bool Key_LEFT = false;
 bool isShowingHelp = false;
+int Mouse_X, Mouse_Y;
+
+struct Quaternion
+{
+    double w;
+    double x;
+    double y;
+    double z;
+};
+
+double Rotate[16];
+
+Quaternion Target;
+Quaternion current = {0.0,0.0,0.0,0.0};
+
+Quaternion & operator *(Quaternion &q1, Quaternion &q2)
+{
+    Quaternion q0={
+        q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z,
+        q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y,
+        q1.w * q2.y - q1.x * q2.z + q1.y * q2.w + q1.z * q2.x,
+        q1.w * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * q2.w,
+    };
+    q1=q0;
+    return q1;
+}
+
+void qtor(double *r , Quaternion q)
+{
+    double xx = q.x * q.x * 2.0;
+    double yy = q.y * q.y * 2.0;
+    double zz = q.z * q.z * 2.0;
+    double xy = q.x * q.y * 2.0;
+    double yz = q.y * q.z * 2.0;
+    double zx = q.z * q.x * 2.0;
+    double xw = q.x * q.w * 2.0;
+    double yw = q.y * q.w * 2.0;
+    double zw = q.z * q.w * 2.0;
+    double r1[16]={ 1.0 - yy - zz, xy + zw, zx - yw, 0.0,
+        xy - zw, 1.0 - zz - xx, yz + xw, 0.0,
+        zx + yw, yz - xw, 1.0 - xx - yy, 0.0,
+        0.0, 0.0, 0.0, 1.0};
+    for (int i = 0;i < 16;i++) {
+        r[i]=r1[i];
+    }
+}
 
 Ball *balls[1] = {
-    new Ball( 0    , 0.81f, 0.3f, 0.05f), //1
+    new Ball( 0, 0.81f, 0.3f, 0.05f), //1
     /*
     new Ball(-0.05f, 0.81f, 0.2f, 0.05f), //8
     new Ball( 0.05f, 0.81f, 0.2f, 0.05f), //7
@@ -138,6 +189,42 @@ void keyboard(unsigned char key, int x, int y)
     }
 }
 
+void mouse(int button, int state, int x, int y)
+{
+    if(button){
+        switch (state) {
+            case GLUT_DOWN:
+                Mouse_X = x;
+                Mouse_Y = y;
+                break;
+            case GLUT_UP:
+                current = Target;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void mousemove(int x, int y)
+{
+    //移動量を計算
+    double dx = (x - Mouse_X) * 1.33/WIDTH;
+    double dy = (y - Mouse_Y) * 1.0/HEIGHT;
+    
+    //クォータニオンの長さ
+    double length = sqrt(dx * dx + dy * dy);
+    
+    if (length != 0.0) {
+        double radian = length * PAI;
+        double theta = sin(radian) / length;
+        Quaternion after={ cos(radian), dy * theta, dx * theta, 0.0};//回転後の姿勢
+        
+        Target = after * current;
+        
+        qtor(Rotate, Target);
+    }
+}
 
 void init(void)
 {
@@ -200,6 +287,8 @@ void display(void)
     
     keyboardFlag();
     Cam.updateCamera();
+    glMultMatrixd(Rotate);
+    
     // if you need it, activate it
     drawStrings();
     
@@ -229,7 +318,7 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(500, 500);
+    glutInitWindowSize(WIDTH, HEIGHT);
     glutInitWindowPosition(100, 100);
     glutCreateWindow(argv[0]);
     
@@ -239,6 +328,7 @@ int main(int argc, char** argv)
     // this func updates the items that you wanna change, prob;
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
+    glutMouseFunc(mouse);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(arrowkeysDown);
     glutSpecialUpFunc(arrowKeysUp);

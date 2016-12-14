@@ -10,75 +10,37 @@
 
 Pool::Pool()
 {
-    this->setPosition(0, 1, 1);
-    this->setScale(1, 0.75, 1.5);
-}
-
-Pool::Pool(float x, float y, float z)
-{
-    this->setPosition(x, y, z);
-}
-
-void Pool::setPosition(float x, float y, float z)
-{
-    position = Vector3(x,y,z);
-}
-
-void Pool::setScale(float x, float y, float z)
-{
-    scale = Vector3(x,y,z);
+    table = Cube();
+    table.setPosition(0, 0.5f, 1);
+    table.setScale(1, 0.25f, 1.5f);
+    table.setMaterial(0.4f, 0.8f, 0.4f, 1.0f);
+    
+    right = Cube();
+    right.setPosition(1, 0.75f, 1);
+    right.setScale(0.1f, 0.1f, 1.5f);
+    right.setMaterial(0.7f, 0.7f, 0, 1);
+    
+    left = Cube();
+    left.setPosition(-1, 0.75f, 1);
+    left.setScale(0.1f, 0.1f, 1.5f);
+    left.setMaterial(0.7f, 0.7f, 0, 1);
+    
+    front = Cube();
+    front.setPosition(0, 0.75f, -0.5f);
+    front.setScale(1.1f, 0.1f, 0.1f);
+    front.setMaterial(0.7f, 0.7f, 0, 1);
+    
+    back = Cube();
+    back.setPosition(0, 0.75f, 2.5f);
+    back.setScale(1, 0.1f, 0.1f);
+    back.setMaterial(0.7f, 0.7f, 0, 1);
 }
 
 void Pool::Update()
 {
-    glPushMatrix();
-    
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat);
-    
-    // front
-    glBegin(GL_QUADS);
-    glNormal3f(position.x + 0.0, position.y + 0.0, position.z + -1.0);
-    glVertex3f(scale.x *  1, scale.y *  1, scale.z * 1);
-    glVertex3f(scale.x * -1, scale.y *  1, scale.z * 1);
-    glVertex3f(scale.x * -1, scale.y * -1, scale.z * 1);
-    glVertex3f(scale.x *  1, scale.y * -1, scale.z * 1);
-    
-    // left
-    glNormal3f(position.x + 1.0, position.y + 0.0, position.z + 0.0);
-    glVertex3f(scale.x *  1, scale.y *  1, scale.z *  1);
-    glVertex3f(scale.x *  1, scale.y *  1, scale.z * -1);
-    glVertex3f(scale.x *  1, scale.y * -1, scale.z * -1);
-    glVertex3f(scale.x *  1, scale.y * -1, scale.z *  1);
-    
-    // right
-    glNormal3f(position.x + -1.0, position.y + 0.0, position.z + 0.0);
-    glVertex3f(scale.x * -1, scale.y *  1, scale.z * -1);
-    glVertex3f(scale.x * -1, scale.y *  1, scale.z *  1);
-    glVertex3f(scale.x * -1, scale.y * -1, scale.z *  1);
-    glVertex3f(scale.x * -1, scale.y * -1, scale.z * -1);
-    
-    // back
-    glNormal3f(position.x + 0.0, position.y + 0.0, position.z + 1.0);
-    glVertex3f(scale.x *  1, scale.y *  1, scale.z * -1);
-    glVertex3f(scale.x * -1, scale.y *  1, scale.z * -1);
-    glVertex3f(scale.x * -1, scale.y * -1, scale.z * -1);
-    glVertex3f(scale.x *  1, scale.y * -1, scale.z * -1);
-    
-    // top
-    glNormal3f(position.x + 0.0, position.y + 1.0, position.z + 0.0);
-    glVertex3f(scale.x *  1, scale.y *  1, scale.z *  1);
-    glVertex3f(scale.x * -1, scale.y *  1, scale.z *  1);
-    glVertex3f(scale.x * -1, scale.y *  1, scale.z * -1);
-    glVertex3f(scale.x *  1, scale.y *  1, scale.z * -1);
-    
-    // bottom
-    glNormal3f(position.x + 0.0, position.y + -1.0, position.z + 0.0);
-    glVertex3f(scale.x *  1, scale.y * -1, scale.z *  1);
-    glVertex3f(scale.x * -1, scale.y * -1, scale.z *  1);
-    glVertex3f(scale.x * -1, scale.y * -1, scale.z * -1);
-    glVertex3f(scale.x *  1, scale.y * -1, scale.z * -1);
-    
-    glEnd();
-    
-    glPopMatrix();
+    table.Update();
+    right.Update();
+    left.Update();
+    front.Update();
+    back.Update();
 }

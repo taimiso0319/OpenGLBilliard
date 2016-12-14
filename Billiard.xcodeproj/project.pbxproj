@@ -14,8 +14,8 @@
 		AA55EA481DE0DEBA00B76F2F /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA461DE0DEBA00B76F2F /* Pool.cpp */; };
 		AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA491DE0DF5B00B76F2F /* Camera.cpp */; };
 		AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */; };
-		AA55EA531DE0DF5B00B76F2F /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */; };
 		AA55EA541DE0DF5B00B76F2F /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */; };
+		AAFA009E1E006437007A58C6 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAFA009C1E006437007A58C6 /* Cube.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,12 +41,12 @@
 		AA55EA471DE0DEBA00B76F2F /* Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
 		AA55EA491DE0DF5B00B76F2F /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawString.cpp; sourceTree = "<group>"; };
-		AA55EA4B1DE0DF5B00B76F2F /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
 		AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawString.h; sourceTree = "<group>"; };
-		AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
 		AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		AA55EA4F1DE0DF5B00B76F2F /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		AA55EA501DE0DF5B00B76F2F /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		AAFA009C1E006437007A58C6 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		AAFA009D1E006437007A58C6 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 			children = (
 				AA55EA491DE0DF5B00B76F2F /* Camera.cpp */,
 				AA55EA4F1DE0DF5B00B76F2F /* Camera.h */,
-				AA55EA4D1DE0DF5B00B76F2F /* Quaternion.cpp */,
-				AA55EA4B1DE0DF5B00B76F2F /* Quaternion.h */,
+				AAFA009C1E006437007A58C6 /* Cube.cpp */,
+				AAFA009D1E006437007A58C6 /* Cube.h */,
 				AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */,
 				AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */,
 				AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */,
@@ -165,13 +165,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFA009E1E006437007A58C6 /* Cube.cpp in Sources */,
 				AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */,
 				AA55EA391DDE389A00B76F2F /* Ball.cpp in Sources */,
 				AA55EA481DE0DEBA00B76F2F /* Pool.cpp in Sources */,
 				AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */,
 				AA55EA541DE0DF5B00B76F2F /* Vector3.cpp in Sources */,
 				AA2A36F91D9A25FD00BBABFC /* BilliardMain.cpp in Sources */,
-				AA55EA531DE0DF5B00B76F2F /* Quaternion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
