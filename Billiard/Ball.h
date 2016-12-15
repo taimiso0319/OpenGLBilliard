@@ -37,6 +37,9 @@ public:
     void setDirVec(float x, float y, float z);
     float getSpeed();
     float getRadian();
+    
+    
+    
     Vector3 getDirVec();
     void setColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
     void setPosition(float x, float y, float z);

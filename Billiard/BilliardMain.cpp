@@ -18,7 +18,6 @@
 #include "DrawString.h"
 #include "Camera.h"
 
-#define DEGREE 60
 #define WIDTH 500
 #define HEIGHT 500
 #define PAI 3.14159
@@ -51,7 +50,7 @@ Ball *balls[15] = {
     new Ball( 0.1f , 0.81f,-0.1f, 0.05f), //4
     new Ball( 0.2f , 0.81f,-0.1f, 0.05f)  //2
     };
-Ball *player_ball = new Ball(-0.01f, 0.81f, 1.2f, 0.05f);
+Ball *playerBall = new Ball(-0.01f, 0.81f, 1.2f, 0.05f);
 Pool pool;
 Cylinder Cue = Cylinder();
 Camera Cam;
@@ -170,9 +169,9 @@ void keyboard(unsigned char key, int x, int y)
     switch (key) {
         case ' ':
             // TODO: do something for pushing a space bar;
-            if(player_ball->getSpeed() <= 0)
+            if(playerBall->getSpeed() <= 0)
             {
-                player_ball->setSpeed(0.15f);
+                playerBall->setSpeed(0.15f);
             }
             break;
         case 'h':
@@ -183,7 +182,7 @@ void keyboard(unsigned char key, int x, int y)
             Cam.RotateUpdate();
             break;
         case 'c':
-            Cam.setLookAt(player_ball->getPosition());
+            Cam.setLookAt(playerBall->getPosition());
             Cam.RotateUpdate();
             break;
         default:
@@ -212,14 +211,14 @@ void init(void)
 }
 
 void updateBalls(){
-    player_ball->checkDists(balls);
+    playerBall->checkDists(balls);
     for(int i = 0; i < 15; i++)
     {
         balls[i]->checkDists(balls);
         balls[i]->Update();
         checkWall(balls[i]);
     }
-    player_ball->Update();
+    playerBall->Update();
 }
 
 void drawStrings(){
@@ -247,16 +246,16 @@ void keyboardFlag(void)
     {
         Cam.RotateLeft();
         Cue.RotateRight();
-        if(player_ball->getSpeed() <= 0){
-            player_ball->setDirVec(tempDir);
+        if(playerBall->getSpeed() <= 0){
+            playerBall->setDirVec(tempDir);
         }
     }
     if(Key_RIGHT)
     {
         Cam.RotateRight();
         Cue.RotateLeft();
-        if(player_ball->getSpeed() <= 0){
-            player_ball->setDirVec(tempDir);
+        if(playerBall->getSpeed() <= 0){
+            playerBall->setDirVec(tempDir);
         }
     }
 }
@@ -278,22 +277,22 @@ void display(void)
     glNormal3f(0.0, 0.0, 1.0);
     //player_ball->showPosition();
     pool.Update();
-    checkWall(player_ball);
+    checkWall(playerBall);
     updateBalls();
     for(int i = 0; i < 6; i++)
     {
         Holes[i].Update();
     }
-    if(player_ball->getSpeed() <= 0)
+    if(playerBall->getSpeed() <= 0)
     {
-        Cam.setLookAt(player_ball->getPosition());
+        Cam.setLookAt(playerBall->getPosition());
         Cam.RotateUpdate();
         
         Vector3 tempDir;
         tempDir = (Cam.getLookAt() - Cam.getPosition());
         tempDir.y = 0;
         tempDir.normalize();
-        player_ball->setDirVec(tempDir);
+        playerBall->setDirVec(tempDir);
     }
     glutSwapBuffers();
     glFlush();

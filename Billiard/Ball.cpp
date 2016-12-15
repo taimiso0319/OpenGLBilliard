@@ -156,8 +156,38 @@ void Ball::hitBall(Ball * targetBall)
     this->setPosition(this->position + dirVec * -0.05f);
     Vector3 toTargetVector = targetBall->getPosition() - this->position;
     toTargetVector.normalize();
+    targetBall->setDirVec(toTargetVector);
+    ///
+    float xlen = targetBall->getPosition().x - this->getPosition().x;
+    float zlen = targetBall->getPosition().z - this->getPosition().z;
+    
+    float hitAngle = fabsf((atanf(xlen/zlen)));
+    cout << hitAngle * 180/PI << endl;
+    ///
+    
+    float angleTarget = atan2f(dirVec.x * speed, dirVec.z * speed);
+    float angleSA = angleTarget - hitAngle;
+    
+    float speed1 = fabs(speed * cos(angleSA));
+    float speed2 = fabs(speed * sin(angleSA));
+    
+    targetBall->setSpeed(speed1);
+    this->speed = speed2;
+    
+    Vector3 thisVec;
+    if(sin(angleSA)<0){
+        thisVec = Vector3(speed2 * sin(hitAngle-PI/2), 0, speed2 * cos(hitAngle-PI/2));
+        thisVec.normalize();
+        this->setDirVec(thisVec);
+    }else{
+        thisVec = Vector3(speed2 * sin(hitAngle+PI/2), 0, speed2 * cos(hitAngle+PI/2));
+        thisVec.normalize();
+        this->setDirVec(thisVec);
+    }
+    
+    /*
     //cout << "dirVec" << endl;
-    dirVec.display_test();
+    //dirVec.display_test();
     //cout << "totarget" << endl;
     toTargetVector.display_test();
     float angle = getAngleOfVectors(toTargetVector);
@@ -167,17 +197,19 @@ void Ball::hitBall(Ball * targetBall)
     
     //cout << "tempSpeed" << endl;
     //cout << tempSpeed << endl;
+    
     targetBall->setSpeed(tempSpeed);
     targetBall->setDirVec(toTargetVector);
     this->setSpeed(this->speed - tempSpeed);
-    Vector3 tempDir =
-    crossProduct(toTargetVector);
-    //tempDir.display_test();
+    Vector3 tempDir = Vector3(toTargetVector.z, 0 , toTargetVector.x);
+    cout << "test" << dotProduct(toTargetVector) << endl;
+    tempDir.display_test();
     tempDir.normalize();
     //tempDir.display_test();
     //cout << toTargetVector.x << " asfd " << toTargetVector.y << " asfd " << toTargetVector.z;
     //cout << angle << endl;
-    this->setDirVec(tempDir * -1);
+    this->setDirVec(tempDir);
+     */
     
 }
 
@@ -188,7 +220,7 @@ float Ball::getVectorLength(Vector3 vec)
 
 float Ball::dotProduct(Vector3 targetVec)
 {
-    return this->dirVec.x * targetVec.x + this->dirVec.y * targetVec.y + this->dirVec.z * targetVec.z;
+    return this->dirVec.x * targetVec.x + this->dirVec.z * targetVec.z;
 }
 // Todo : this is useless right now;
 Vector3 Ball::crossProduct(Vector3 targetVec)
