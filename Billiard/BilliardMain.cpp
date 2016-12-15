@@ -29,6 +29,8 @@ bool Key_RIGHT = false;
 bool Key_LEFT = false;
 bool isShowingHelp = false;
 
+Cylinder Holes[6];
+
 Ball *balls[15] = {
     new Ball( 0, 0.81f, 0.3f, 0.05f), //1
     new Ball(-0.05f, 0.81f, 0.2f, 0.05f), //8
@@ -72,6 +74,25 @@ void ballColorInitialize()
     balls[12]->setColor(0.6f, 0.6f, 0.2f, 1.0f);
     balls[13]->setColor(0.8f, 0.4f, 0.8f, 1.0f);
     balls[14]->setColor(0.4f, 0.4f, 0.8f, 1.0f);
+}
+
+void holesInitialize()
+{
+    for(int i = 0; i < 6; i++)
+    {
+        Holes[i] = Cylinder();
+        Holes[i].setAngleX(0);
+        Holes[i].setRadius(0.1f);
+        Holes[i].setHeight(0.05f);
+        Holes[i].setMaterial(0, 0, 0, 1);
+    }
+    Holes[0].setPosition(-0.9f, 2.2001f, -0.4f);
+    Holes[1].setPosition(-0.9f, 2.2001f, 1);
+    Holes[2].setPosition(-0.9f, 2.2001f, 2.3f);
+    Holes[3].setPosition(0.9f, 2.2001f, -0.4f);
+    Holes[4].setPosition(0.9f, 2.2001f, 1);
+    Holes[5].setPosition(0.9f, 2.2001f, 2.3f);
+
 }
 
 void checkWall(Ball * ball)
@@ -185,6 +206,8 @@ void init(void)
     
     glClearColor (0.5, 0.5, 1.0, 0.0);	// sky
     ballColorInitialize();
+    holesInitialize();
+    
     glEnable(GL_DEPTH_TEST);
 }
 
@@ -257,6 +280,10 @@ void display(void)
     pool.Update();
     checkWall(player_ball);
     updateBalls();
+    for(int i = 0; i < 6; i++)
+    {
+        Holes[i].Update();
+    }
     if(player_ball->getSpeed() <= 0)
     {
         Cam.setLookAt(player_ball->getPosition());

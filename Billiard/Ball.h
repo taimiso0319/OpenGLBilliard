@@ -29,6 +29,8 @@ public:
     Ball(float init_x, float init_y, float init_z, float init_rad);
     void Update();
     Vector3 getPosition();
+    float getXSpeed();
+    float getZSpeed();
     void showPosition();
     void setSpeed(float s);
     void setDirVec(Vector3 vec);
