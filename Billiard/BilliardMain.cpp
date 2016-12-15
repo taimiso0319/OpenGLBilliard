@@ -84,14 +84,24 @@ void checkWall(Ball * ball)
 {
     Vector3 tempPos = ball->getPosition();
     Vector3 tempDir = ball->getDirVec();
-    if(tempPos.x + ball->getRadian() > pool.rightf || tempPos.x + ball->getRadian() < pool.leftf)
+    if(tempPos.x + ball->getRadian() >= pool.rightf)
     {
-        tempPos = tempPos + (tempDir * -0.01f);
+        ball->setPosition(tempPos.x - 0.01f, tempPos.y, tempPos.z);
         ball->setDirVec(ball->getDirVec().x * -1, ball->getDirVec().y, ball->getDirVec().z);
     }
-    if(tempPos.z + ball->getRadian() > pool.backf || tempPos.z + ball->getRadian() < pool.frontf)
+    if(tempPos.x + ball->getRadian() <= pool.leftf)
     {
-        tempPos = tempPos + (tempDir * -0.01f);
+        ball->setPosition(tempPos.x + 0.01f, tempPos.y, tempPos.z);
+        ball->setDirVec(ball->getDirVec().x * -1, ball->getDirVec().y, ball->getDirVec().z);
+    }
+    if(tempPos.z + ball->getRadian() >= pool.backf)
+    {
+        ball->setPosition(tempPos.x, tempPos.y, tempPos.z - 0.01f);
+        ball->setDirVec(ball->getDirVec().x, ball->getDirVec().y, ball->getDirVec().z * -1);
+    }
+    if(tempPos.z + ball->getRadian() <= pool.frontf)
+    {
+        ball->setPosition(tempPos.x, tempPos.y, tempPos.z + 0.01f);
         ball->setDirVec(ball->getDirVec().x, ball->getDirVec().y, ball->getDirVec().z * -1);
     }
 }
