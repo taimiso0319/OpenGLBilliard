@@ -157,7 +157,7 @@ void keyboard(unsigned char key, int x, int y)
             // TODO: do something for pushing a space bar;
             if(playerBall->getSpeed() <= 0)
             {
-                playerBall->setSpeed(0.15f);
+                playerBall->setSpeed(0.10f);
             }
             break;
         case 'h':

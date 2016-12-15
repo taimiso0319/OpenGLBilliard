@@ -153,7 +153,7 @@ void Ball::checkDists(Ball **balls)
 
 void Ball::hitBall(Ball * targetBall)
 {
-    this->setPosition(this->position + dirVec * -0.1f);
+    this->setPosition(this->position + dirVec * -0.05f);
     Vector3 toTargetVector = targetBall->getPosition() - this->position;
     toTargetVector.normalize();
     targetBall->setDirVec(toTargetVector);
@@ -253,7 +253,7 @@ void Ball::Update()
     
     if(this->speed > 0)
     {
-        this->speed -= 0.002f;
+        this->speed -= 0.001f;
     }else if(this->speed < 0)
     {
         this->speed = 0;
