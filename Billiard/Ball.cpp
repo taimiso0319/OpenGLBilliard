@@ -139,9 +139,9 @@ void Ball::checkDists(Ball **balls)
                 //cout << "hit" << endl;
                 //thisBallPos.display_test();
                 if(0 < this->speed){
-                    Vector3 tempPos = this->position + (this->dirVec * -1) * (dist - powRad);
+                    //Vector3 tempPos = this->position + (this->dirVec * -1) * (dist - powRad);
                     //tempPos.display_test();
-                    this->setPosition(tempPos);
+                    //this->setPosition(tempPos);
                     hitBall(balls[i]);
                 }
             }
@@ -153,7 +153,7 @@ void Ball::checkDists(Ball **balls)
 
 void Ball::hitBall(Ball * targetBall)
 {
-    this->setPosition(this->position + dirVec * -0.05f);
+    this->setPosition(this->position + dirVec * -0.08f);
     Vector3 toTargetVector = targetBall->getPosition() - this->position;
     toTargetVector.normalize();
     targetBall->setDirVec(toTargetVector);

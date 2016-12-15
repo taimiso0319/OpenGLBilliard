@@ -31,24 +31,24 @@ bool isShowingHelp = false;
 Holes holes;
 
 Ball *balls[15] = {
-    new Ball( 0, 0.81f, 0.3f, 0.05f), //1
-    new Ball(-0.05f, 0.81f, 0.2f, 0.05f), //8
-    new Ball( 0.05f, 0.81f, 0.2f, 0.05f), //7
+    new Ball( 0, 0.81f, 0.35f, 0.05f), //1
+    new Ball(-0.055f, 0.81f, 0.24f, 0.05f), //8
+    new Ball( 0.055f, 0.81f, 0.24f, 0.05f), //7
     
-    new Ball(-0.1f , 0.81f, 0.1f, 0.05f), //13
-    new Ball( 0    , 0.81f, 0.1f, 0.05f), //12
-    new Ball( 0.1f , 0.81f, 0.1f, 0.05f), //11
+    new Ball(-0.105f , 0.81f, 0.13f, 0.05f), //13
+    new Ball( 0    , 0.81f, 0.13f, 0.05f), //12
+    new Ball( 0.105f , 0.81f, 0.13f, 0.05f), //11
     
-    new Ball(-0.15f, 0.81f, 0.0f, 0.05f), //10
-    new Ball(-0.05f, 0.81f, 0.0f, 0.05f), //15
-    new Ball( 0.05f, 0.81f, 0.0f, 0.05f), //14
-    new Ball( 0.15f, 0.81f, 0.0f, 0.05f), //9
+    new Ball(-0.157f, 0.81f, 0.02f, 0.05f), //10
+    new Ball(-0.055f, 0.81f, 0.02f, 0.05f), //15
+    new Ball( 0.055f, 0.81f, 0.02f, 0.05f), //14
+    new Ball( 0.157f, 0.81f, 0.02f, 0.05f), //9
     
-    new Ball(-0.2f , 0.81f,-0.1f, 0.05f), //3
-    new Ball(-0.1f , 0.81f,-0.1f, 0.05f), //6
-    new Ball( 0    , 0.81f,-0.1f, 0.05f), //5
-    new Ball( 0.1f , 0.81f,-0.1f, 0.05f), //4
-    new Ball( 0.2f , 0.81f,-0.1f, 0.05f)  //2
+    new Ball(-0.207f , 0.81f,-0.09f, 0.05f), //3
+    new Ball(-0.105f , 0.81f,-0.09f, 0.05f), //6
+    new Ball( 0    , 0.81f,-0.09f, 0.05f), //5
+    new Ball( 0.105f , 0.81f,-0.09f, 0.05f), //4
+    new Ball( 0.207f , 0.81f,-0.09f, 0.05f)  //2
     };
 Ball *playerBall = new Ball(-0.01f, 0.81f, 1.2f, 0.05f);
 Pool pool;
