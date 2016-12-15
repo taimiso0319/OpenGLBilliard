@@ -13,7 +13,7 @@
 #include <math.h>
 #include "Ball.h"
 #include "Pool.h"
-#include "Cylinder.h"
+#include "Holes.h"
 
 #include "DrawString.h"
 #include "Camera.h"
@@ -28,7 +28,7 @@ bool Key_RIGHT = false;
 bool Key_LEFT = false;
 bool isShowingHelp = false;
 
-Cylinder Holes[6];
+Holes holes;
 
 Ball *balls[15] = {
     new Ball( 0, 0.81f, 0.3f, 0.05f), //1
@@ -77,21 +77,7 @@ void ballColorInitialize()
 
 void holesInitialize()
 {
-    for(int i = 0; i < 6; i++)
-    {
-        Holes[i] = Cylinder();
-        Holes[i].setAngleX(0);
-        Holes[i].setRadius(0.1f);
-        Holes[i].setHeight(0.05f);
-        Holes[i].setMaterial(0, 0, 0, 1);
-    }
-    Holes[0].setPosition(-0.9f, 2.2001f, -0.4f);
-    Holes[1].setPosition(-0.9f, 2.2001f, 1);
-    Holes[2].setPosition(-0.9f, 2.2001f, 2.3f);
-    Holes[3].setPosition(0.9f, 2.2001f, -0.4f);
-    Holes[4].setPosition(0.9f, 2.2001f, 1);
-    Holes[5].setPosition(0.9f, 2.2001f, 2.3f);
-
+    holes = Holes();
 }
 
 void checkWall(Ball * ball)
@@ -278,11 +264,9 @@ void display(void)
     //player_ball->showPosition();
     pool.Update();
     checkWall(playerBall);
+    holes.Update();
+    holes.checkHit(balls);
     updateBalls();
-    for(int i = 0; i < 6; i++)
-    {
-        Holes[i].Update();
-    }
     if(playerBall->getSpeed() <= 0)
     {
         Cam.setLookAt(playerBall->getPosition());

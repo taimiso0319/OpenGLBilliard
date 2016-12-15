@@ -15,6 +15,7 @@
 		AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA491DE0DF5B00B76F2F /* Camera.cpp */; };
 		AA55EA521DE0DF5B00B76F2F /* DrawString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */; };
 		AA55EA541DE0DF5B00B76F2F /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */; };
+		AA5F8F341E02C209009CEBEB /* Holes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5F8F321E02C209009CEBEB /* Holes.cpp */; };
 		AAFA009E1E006437007A58C6 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAFA009C1E006437007A58C6 /* Cube.cpp */; };
 		AAFA00BC1E01A233007A58C6 /* Cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAFA00BA1E01A233007A58C6 /* Cylinder.cpp */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,8 @@
 		AA55EA4E1DE0DF5B00B76F2F /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
 		AA55EA4F1DE0DF5B00B76F2F /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		AA55EA501DE0DF5B00B76F2F /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		AA5F8F321E02C209009CEBEB /* Holes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Holes.cpp; sourceTree = "<group>"; };
+		AA5F8F331E02C209009CEBEB /* Holes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holes.h; sourceTree = "<group>"; };
 		AAFA009C1E006437007A58C6 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		AAFA009D1E006437007A58C6 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		AAFA00BA1E01A233007A58C6 /* Cylinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cylinder.cpp; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				AAFA009C1E006437007A58C6 /* Cube.cpp */,
 				AAFA009D1E006437007A58C6 /* Cube.h */,
 				AAFA00BA1E01A233007A58C6 /* Cylinder.cpp */,
+				AA5F8F321E02C209009CEBEB /* Holes.cpp */,
+				AA5F8F331E02C209009CEBEB /* Holes.h */,
 				AAFA00BB1E01A233007A58C6 /* Cylinder.h */,
 				AA55EA4A1DE0DF5B00B76F2F /* DrawString.cpp */,
 				AA55EA4C1DE0DF5B00B76F2F /* DrawString.h */,
@@ -170,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5F8F341E02C209009CEBEB /* Holes.cpp in Sources */,
 				AAFA009E1E006437007A58C6 /* Cube.cpp in Sources */,
 				AA55EA511DE0DF5B00B76F2F /* Camera.cpp in Sources */,
 				AAFA00BC1E01A233007A58C6 /* Cylinder.cpp in Sources */,
